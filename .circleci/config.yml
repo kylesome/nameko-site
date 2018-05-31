@@ -24,7 +24,11 @@ jobs:
         name: lint
         command: yarn run lint
 
-  build_and_deploy:
+    - run:
+        name: build
+        command: yarn run build
+
+  deploy:
     docker:
     - image: circleci/node:8.11
 
@@ -44,7 +48,7 @@ workflows:
   all_jobs:
     jobs:
     - test
-    - build_and_deploy:
+    - deploy:
         requires:
         - test
         filters:
