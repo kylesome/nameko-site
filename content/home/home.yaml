@@ -1,0 +1,81 @@
+heroBanner:
+  title: Nameko
+  howToSay: "[ nah - meh - koh ]"
+  tagLine: A microservice framework for Python.
+  cta: Get Started
+
+valueProps:
+- title: Focus on business logic
+  description: Write regular Python methods and classes to implement your service. Nameko will manage connections, transports and concurrency for you.
+  icon: puzzle.png
+- title: Distributed and scalable
+  description: Spin up multiple service instances to easily scale out. Nameko gives you effortless concurrency by yielding workers when they wait for I/O, leaving you free to handle many requests without the worry of threading.
+  icon: graph.png
+- title: Extensible
+  description: Nameko is compatible with almost any protocol, transport or database. Simply use the built-in extensions, build your own or leverage the community.
+  icon: gears.png
+
+installation:
+  title: Installation
+  intro: The easiest way to install Nameko is from PyPI, using pip
+  command: "$ pip install nameko"
+  description: |
+    To read the detailed installation instructions, see our documentation.
+    Use the mailing list to raise questions or problems you may have
+    Chat to us on Gitter for some real-time interactions
+
+companies:
+  title: Used by many
+  logos:
+  - studentcom.png
+  - studentcom.png
+
+extentions:
+  title: Extentions
+  extentions:
+  - title: Sentry
+    description: Sends exception info to Sentry
+    link: https://sentry.io/
+  - title: Tracer
+    description: Logs traces
+    link: https://sentry.io/
+  - title: Timer
+    description: Used for firing entrypoints
+    link: https://sentry.io/
+  - title: Sentry
+    description: Sends exception info to Sentry
+    link: https://sentry.io/
+  - title: Tracer
+    description: Logs traces
+    link: https://sentry.io/
+  - title: Timer
+    description: Used for firing entrypoints
+    link: https://sentry.io/
+
+testimonials:
+  title: Testimonials
+  testimonials:
+  - quote: The best Open Source solution for this problem in the Python world so far
+    author: Armin Ronacher
+    twitterHandle: "@mitsuhiko"
+  - quote: I really love the API, it's kind of brilliant.
+    author: Alexander Goldberg
+    twitterHandle: "@ayoshi"
+  - quote: The best Open Source solution for this problem in the Python world so far
+    author: Armin Ronacher
+    twitterHandle: "@mitsuhiko"
+  - quote: I really love the API, it's kind of brilliant.
+    author: Alexander Goldberg
+    twitterHandle: "@ayoshi"
+
+authors:
+  title: The authors
+  authors:
+  - name: Matt Yule-Bennett
+    githubHandle: "@mattbennett"
+    twitterHandle: "@mattbennett"
+    image: matt_bennett.jpeg
+  - name: David Szotten
+    githubHandle: "@davidszotten"
+    twitterHandle: "@davidszotten"
+    image: david_szotten.jpeg

@@ -1,0 +1,44 @@
+{
+  "name": "nameko-site",
+  "author": "Kyle Stewart <kylesome@gmail.com>",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "@types/react": "^16.0.40",
+    "emotion": "^8.0.8",
+    "emotion-server": "^8.0.8",
+    "feather-icons": "^4.7.3",
+    "gatsby": "^1.9.76",
+    "gatsby-image": "^1.0.13",
+    "gatsby-link": "^1.6.21",
+    "gatsby-plugin-emotion": "^1.1.8",
+    "gatsby-plugin-offline": "^1.0.10",
+    "gatsby-plugin-react-helmet": "^2.0.6",
+    "gatsby-plugin-react-next": "^1.0.4",
+    "gatsby-plugin-sharp": "^1.6.9",
+    "gatsby-plugin-typescript": "^1.4.17",
+    "gatsby-plugin-typography": "^1.7.18",
+    "gatsby-remark-prismjs": "^2.0.2",
+    "gatsby-source-filesystem": "^1.5.5",
+    "gatsby-transformer-json": "^1.0.11",
+    "gatsby-transformer-remark": "^1.7.17",
+    "gatsby-transformer-sharp": "^1.6.10",
+    "gatsby-transformer-yaml": "^1.5.11",
+    "grid-emotion": "^3.2.0",
+    "normalize.css": "^7.0.0",
+    "prismjs": "^1.14.0",
+    "prop-types": "^15.6.0",
+    "react-emotion": "^8.0.8",
+    "react-helmet": "^5.2.0",
+    "react-slick": "^0.23.1",
+    "typescript": "^2.7.2"
+  },
+  "devDependencies": {
+    "gh-pages": "^1.1.0"
+  },
+  "scripts": {
+    "develop": "gatsby develop",
+    "build": "gatsby build",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
+  }
+}
