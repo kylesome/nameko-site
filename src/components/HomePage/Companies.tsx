@@ -4,7 +4,7 @@ import styled from 'react-emotion';
 import { Flex, Box } from 'grid-emotion';
 import Img from 'gatsby-image';
 
-import { Container } from '../layout';
+import { Container } from '../Layout';
 import { Slider } from '../Slider';
 import { Slide } from '../Slider/Slide';
 import { media, colors } from '../../utils/css';
