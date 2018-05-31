@@ -1,0 +1,51 @@
+version: 2
+jobs:
+  test:
+    docker:
+    - image: circleci/node:8.11
+
+    steps:
+    - checkout
+
+    - restore_cache:
+        keys:
+        - dependency-cache-{{ checksum "package.json" }}
+
+    - run:
+        name: install dependencies
+        command: yarn install
+
+    - save_cache:
+        key: dependency-cache-{{ checksum "package.json" }}
+        paths:
+        - ./node_modules
+
+    - run:
+        name: lint
+        command: yarn run lint
+
+  build_and_deploy:
+    docker:
+    - image: circleci/node:8.11
+
+    steps:
+    - checkout
+
+    - restore_cache:
+        keys:
+        - dependency-cache-{{ checksum "package.json" }}
+
+    - run:
+        name: deploy
+        command: yarn run deploy
+
+workflows:
+  version: 2
+  all_jobs:
+    jobs:
+      - test
+      - build_and_deploy:
+          filters:
+            branches:
+              only: master
+

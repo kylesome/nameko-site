@@ -39,6 +39,8 @@
   "scripts": {
     "develop": "gatsby develop",
     "build": "gatsby build",
+    "lint": "yarn run lint-types",
+    "lint-types": "tsc --noEmit",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public"
   }
 }
