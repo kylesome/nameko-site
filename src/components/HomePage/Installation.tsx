@@ -3,7 +3,7 @@ import { css } from 'emotion';
 import styled from 'react-emotion';
 import { Flex, Box } from 'grid-emotion';
 
-import { Container } from '../layout';
+import { Container } from '../Layout';
 import { media, colors } from '../../utils/css';
 
 const containerStyles = css`

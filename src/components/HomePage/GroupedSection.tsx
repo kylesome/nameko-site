@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { css } from 'emotion';
 
-import { Container } from '../layout';
+import { Container } from '../Layout';
 import { colors } from '../../utils/css';
 
 const sectionStyles = css`
