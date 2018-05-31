@@ -37,6 +37,7 @@ const slideInnerStyles = css`
   padding: 30px 30px 88px 30px;
   min-height: 205px;
   position: relative;
+  background-color: ${colors.white};
 `;
 
 const quoteStyles = css`

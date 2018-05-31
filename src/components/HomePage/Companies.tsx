@@ -24,6 +24,7 @@ const slideInnerStyles = css`
   justify-content:center;
   align-items:center;
   height: 137px;
+  background-color: ${colors.white};
 `;
 
 export function Companies({ data, images }) {
