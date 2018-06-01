@@ -41,7 +41,10 @@ jobs:
 
     - run:
         name: deploy
-        command: yarn run deploy
+        command: |
+          git config user.name "$GIT_AUTHOR_NAME"
+          git config user.email "$GIT_AUTHOR_EMAIL"
+          yarn run deploy
 
 workflows:
   version: 2
