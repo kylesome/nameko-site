@@ -1,3 +1,7 @@
+---
+order: 2
+---
+
 ### HTTP
 
 The HTTP entrypoint is built on top of [werkzeug](http://werkzeug.pocoo.org/), and supports all the standard HTTP methods (GET/POST/DELETE/PUT etc)

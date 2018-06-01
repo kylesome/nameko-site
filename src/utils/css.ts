@@ -7,6 +7,7 @@ export const colors = {
   tundora: '#484848',
   dustyGray: '#979797',
   wildSand: '#f4f4f4',
+  amethyst: '#a25ace',
 };
 
 export const media = {

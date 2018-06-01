@@ -98,7 +98,7 @@ const navStyles = css`
 
   li {
     display: inline-block;
-    padding: 48px 24px;
+    padding: 24px;
     position: absolute;
     top: 0;
 
@@ -164,7 +164,7 @@ export function HeroBanner({ data }) {
 };
 
 export const query = graphql`
-  fragment HomePageHeroBannerFragment on HomeYaml {
+  fragment HomePageHeroBanner on HomeYaml {
     heroBanner {
       title
       howToSay

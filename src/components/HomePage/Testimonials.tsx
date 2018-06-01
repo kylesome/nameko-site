@@ -79,7 +79,7 @@ export function Testimonials({ data }) {
                   href={`https://twitter.com/${testimonial.twitterHandle}`}
                 >
                   <span className={twitterHandleStyles}>
-                    {testimonial.twitterHandle}
+                    @{testimonial.twitterHandle}
                   </span>
                 </a>
               </div>
@@ -92,7 +92,7 @@ export function Testimonials({ data }) {
 };
 
 export const query = graphql`
-  fragment HomePageTestimonialsFragment on HomeYaml {
+  fragment HomePageTestimonials on HomeYaml {
     testimonials {
       title
       testimonials {

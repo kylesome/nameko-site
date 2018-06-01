@@ -16,11 +16,16 @@ import { Footer } from '../components/HomePage/Footer';
 import { colors, media } from '../utils/css';
 
 export default function HomePage({ data }) {
-  const siteTitle = data.site.siteMetadata.title;
+  const siteMetadata = data.site.siteMetadata;
+
   return (
     <>
       <Helmet>
-        <title>{siteTitle}</title>
+        <title>{siteMetadata.title}</title>
+        <meta property="og:url" content={siteMetadata.url} />
+        <meta property="og:title" content={siteMetadata.title} />
+        <meta property="og:description" content={data.homeYaml.heroBanner.tagLine} />
+        <meta name="theme-color" content={colors.amethyst} />
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
       </Helmet>
 
@@ -36,10 +41,10 @@ export default function HomePage({ data }) {
       }
       <div>
         <GroupedSection>
-          <Examples data={data.homePageExamples} />
+          <Examples data={data.codeExamples} />
         </GroupedSection>
         <GroupedSection>
-          <Installation data={data.homeYaml.installation} />
+          <Installation data={data.codeInstallation} />
         </GroupedSection>
         <GroupedSection>
           <Companies
@@ -70,20 +75,21 @@ export const query = graphql`
     site {
       siteMetadata {
         title
+        url
       }
     }
     ...ValuePropsImages
     ...CompaniesImages
-    ...HomePageExamples
+    ...CodeExamples
+    ...CodeInstallation
     ...AuthorsImages
     homeYaml(id: {regex: "/home\/home.yaml/"}) {
-      ...HomePageHeroBannerFragment
-      ...HomePageValuePropsFragment
-      ...HomePageInstallationFragment
-      ...HomePageCompaniesFragment
-      ...HomePageExtentionsFragment
-      ...HomePageTestimonialsFragment
-      ...HomePageAuthorsFragment
+      ...HomePageHeroBanner
+      ...HomePageValueProps
+      ...HomePageCompanies
+      ...HomePageExtentions
+      ...HomePageTestimonials
+      ...HomePageAuthors
     }
   }
 `;

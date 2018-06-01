@@ -19,8 +19,12 @@ const containerStyles = css`
   `}
 `;
 
-const exampleContainerStyles = css`
+const exampleMarkdownStyles = css`
   margin-bottom: 40px;
+
+  a {
+    color: ${colors.governorBay};
+  }
 `;
 
 export function Examples({ data }) {
@@ -31,7 +35,7 @@ export function Examples({ data }) {
         data.edges.map((edge, i) => (
           <div
             key={i.toString()}
-            className={exampleContainerStyles}
+            className={exampleMarkdownStyles}
             dangerouslySetInnerHTML={{ __html: edge.node.html }}
           />
         ))
@@ -41,10 +45,11 @@ export function Examples({ data }) {
 };
 
 export const query = graphql`
-  fragment HomePageExamples on RootQueryType {
-    homePageExamples: allMarkdownRemark(filter: {
-      id: {regex: "/home/examples/"}
-    }) {
+  fragment CodeExamples on RootQueryType {
+    codeExamples: allMarkdownRemark(
+      filter: {id: {regex: "/home/examples/"}},
+      sort: {fields: [frontmatter___order], order: ASC}
+    ) {
       edges {
         node {
           html

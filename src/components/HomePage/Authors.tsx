@@ -82,7 +82,7 @@ function Author(props) {
               className={css`text-decoration: none;`}
               href={`https://github.com/${githubHandle}`}
             >
-              <span className={handleStyles}>{githubHandle}</span>
+              <span className={handleStyles}>@{githubHandle}</span>
             </a>
           </div>
           <div>
@@ -91,7 +91,7 @@ function Author(props) {
               className={css`text-decoration: none;`}
               href={`https://twitter.com/${twitterHandle}`}
             >
-              <span className={handleStyles}>{twitterHandle}</span>
+              <span className={handleStyles}>@{twitterHandle}</span>
             </a>
           </div>
         </div>
@@ -124,7 +124,7 @@ export function Authors({ data, images }) {
 };
 
 export const query = graphql`
-  fragment HomePageAuthorsFragment on HomeYaml {
+  fragment HomePageAuthors on HomeYaml {
     authors {
       title
       authors {
