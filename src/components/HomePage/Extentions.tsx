@@ -105,7 +105,7 @@ export function Extentions({ data }) {
 };
 
 export const query = graphql`
-  fragment HomePageExtentionsFragment on HomeYaml {
+  fragment HomePageExtentions on HomeYaml {
     extentions {
       title
       extentions {

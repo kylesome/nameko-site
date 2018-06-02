@@ -69,7 +69,7 @@ export function ValueProp({ data, images }) {
 };
 
 export const query = graphql`
-  fragment HomePageValuePropsFragment on HomeYaml {
+  fragment HomePageValueProps on HomeYaml {
     valueProps {
       title
       description

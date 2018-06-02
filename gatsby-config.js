@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: 'Nameko'
+    title: 'Nameko',
+    url: 'https://kylesome.github.io/nameko-site/',
   },
   pathPrefix: '/nameko-site',
   plugins: [

@@ -1,3 +1,7 @@
+---
+order: 1
+---
+
 ### RPC
 
 Nameko includes an implementation of RPC over AMQP. It comprises the @rpc entrypoint, a proxy for services to talk to other services, and a standalone proxy that non-Nameko clients can use to make RPC calls to a cluster

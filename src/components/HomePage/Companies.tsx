@@ -45,17 +45,16 @@ export function Companies({ data, images }) {
 };
 
 export const query = graphql`
-  fragment HomePageCompaniesFragment on HomeYaml {
+  fragment HomePageCompanies on HomeYaml {
     companies {
       title
-      logos
     }
   }
   fragment CompaniesImages on RootQueryType {
     companiesImages: allImageSharp(filter: {id: {regex: "/images\/companies/"}}) {
       edges {
         node {
-          resolutions(width: 120) {
+          resolutions(width: 140) {
             ...GatsbyImageSharpResolutions_tracedSVG
             originalName
           }
