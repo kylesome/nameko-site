@@ -1,6 +1,6 @@
-### Installation
+###Installation
 
-The easiest way to install Nameko is from PyPI using pip
+The easiest way to install Nameko is from PyPI, using pip
 
 ```sh
 $ pip install nameko
