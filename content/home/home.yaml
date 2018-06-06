@@ -25,7 +25,7 @@ extentions:
     description: Sends exception info to Sentry
     link: https://github.com/mattbennett/nameko-sentry
   - title: Slack
-    description: Send messages to Slack
+    description: Send and receive messages from Slack
     link: https://github.com/iky/nameko-slack
   - title: Sqlalchemy
     description: Sqlalchemy dependancy
