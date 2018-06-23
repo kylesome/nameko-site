@@ -14,7 +14,7 @@ export function PrevArrow({ onClick = () => {} }) {
 
     ${media.desktop`
       left: -35px;
-    `}
+    `};
   `;
 
   return (

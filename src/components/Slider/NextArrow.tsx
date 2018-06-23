@@ -14,7 +14,7 @@ export function NextArrow({ onClick = () => {} }) {
 
     ${media.desktop`
       right: -35px;
-    `}
+    `};
   `;
 
   return (

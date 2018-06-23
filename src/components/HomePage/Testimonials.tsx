@@ -1,14 +1,10 @@
 import * as React from 'react';
 import { css } from 'emotion';
-import styled from 'react-emotion';
-import { Flex, Box } from 'grid-emotion';
-import Img from 'gatsby-image';
 
 import { Container } from '../Layout';
 import { Slider } from '../Slider';
 import { Slide } from '../Slider/Slide';
-import { media, colors } from '../../utils/css';
-import { FeatherIcon } from '../Icons/FeatherIcon';
+import { colors } from '../../utils/css';
 
 const containerStyles = css`
   margin: 88px auto;
@@ -64,32 +60,28 @@ export function Testimonials({ data }) {
     <Container className={containerStyles}>
       <h2 className={headingStyles}>{data.title}</h2>
       <Slider {...sliderSettings}>
-        {
-          data.testimonials.map((testimonial, i) => (
-            <Slide key={i} className={slideInnerStyles}>
-              <p className={quoteStyles}>
-                {testimonial.quote}
-              </p>
-              <div className={authorInfoStyles}>
-                <span className={authorStyles}>
-                  -- {testimonial.author}
+        {data.testimonials.map((testimonial, i) => (
+          <Slide key={i} className={slideInnerStyles}>
+            <p className={quoteStyles}>{testimonial.quote}</p>
+            <div className={authorInfoStyles}>
+              <span className={authorStyles}>-- {testimonial.author}</span>
+              <a
+                className={css`
+                  text-decoration: none;
+                `}
+                href={`https://twitter.com/${testimonial.twitterHandle}`}
+              >
+                <span className={twitterHandleStyles}>
+                  @{testimonial.twitterHandle}
                 </span>
-                <a
-                  className={css`text-decoration: none;`}
-                  href={`https://twitter.com/${testimonial.twitterHandle}`}
-                >
-                  <span className={twitterHandleStyles}>
-                    @{testimonial.twitterHandle}
-                  </span>
-                </a>
-              </div>
-            </Slide>
-          ))
-        }
+              </a>
+            </div>
+          </Slide>
+        ))}
       </Slider>
     </Container>
   );
-};
+}
 
 export const query = graphql`
   fragment HomePageTestimonials on HomeYaml {

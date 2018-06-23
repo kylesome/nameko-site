@@ -14,24 +14,17 @@ const typography = new Typography({
     },
     p: {
       letterSpacing: '1px',
-    }
+    },
   }),
   googleFonts: [
     {
       name: 'Comfortaa',
-      styles: [
-        '300',
-      ],
+      styles: ['300'],
       text: 'Nameko',
     },
     {
       name: 'Open+Sans',
-      styles: [
-        '300',
-        '300i',
-        '400',
-        '600',
-      ],
+      styles: ['300', '300i', '400', '600'],
     },
   ],
 });

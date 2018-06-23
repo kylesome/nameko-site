@@ -16,13 +16,9 @@ const ButtonStyled = styled('button')`
 
   ${media.desktop`
     padding: 18px 57px;
-  `}
+  `};
 `;
 
 export function Cta({ children }) {
-  return (
-    <ButtonStyled>
-      {children}
-    </ButtonStyled>
-  );
+  return <ButtonStyled>{children}</ButtonStyled>;
 }

@@ -13,12 +13,12 @@ export const colors = {
 export const media = {
   desktop: (...args) => css`
     @media (min-width: 640px) {
-      ${css(...args)}
+      ${css(...args)};
     }
   `,
   mobile: (...args) => css`
     @media (max-width: 640px) {
-      ${css(...args)}
+      ${css(...args)};
     }
   `,
 };
@@ -26,11 +26,11 @@ export const media = {
 export const desktopOnly = css`
   ${media.mobile`
     display: none;
-  `}
+  `};
 `;
 
 export const mobileOnly = css`
   ${media.desktop`
     display: none;
-  `}
+  `};
 `;

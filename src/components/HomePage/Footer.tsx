@@ -1,14 +1,8 @@
 import * as React from 'react';
 import { css } from 'emotion';
-import styled from 'react-emotion';
-import { Flex, Box } from 'grid-emotion';
-import Img from 'gatsby-image';
 
 import { Container } from '../Layout';
-import { Slider } from '../Slider';
-import { Slide } from '../Slider/Slide';
-import { media, colors } from '../../utils/css';
-import { FeatherIcon } from '../Icons/FeatherIcon';
+import { colors } from '../../utils/css';
 
 const containerStyles = css`
   color: ${colors.tundora};
@@ -21,7 +15,8 @@ export function Footer() {
   return (
     <Container className={containerStyles}>
       <p>
-        A team effort - designed by Andreea Hrincu & built in the snazziest of ways by Kyle Stewart
+        A team effort - designed by Andreea Hrincu & built in the snazziest of
+        ways by Kyle Stewart
       </p>
     </Container>
   );

@@ -16,7 +16,7 @@ const heroStyles = css`
   ${media.desktop`
     height: 590px;
     padding-top: 130px;
-  `}
+  `};
 `;
 
 const leadStyles = css`
@@ -25,7 +25,7 @@ const leadStyles = css`
 
   ${media.desktop`
     margin-bottom: 72px;
-  `}
+  `};
 `;
 
 const logoStyles = css`
@@ -38,7 +38,7 @@ const logoStyles = css`
   ${media.desktop`
     width: 80px;
     height: 80px;
-  `}
+  `};
 `;
 
 const titleStyles = css`
@@ -51,11 +51,10 @@ const titleStyles = css`
   font-family: 'Comfortaa', cursive;
   margin-bottom: 0;
 
-
   ${media.desktop`
     font-size: 60px;
     padding-top: 10px;
-  `}
+  `};
 `;
 
 const howToSayStyles = css`
@@ -68,7 +67,7 @@ const howToSayStyles = css`
   ${media.mobile`
     font-size: 10px;
     letter-spacing: 1.2px;
-  `}
+  `};
 `;
 
 const tagLineStyles = css`
@@ -84,7 +83,7 @@ const tagLineStyles = css`
     line-height: normal;
     letter-spacing: 2px;
     margin-bottom: 97px;
-  `}
+  `};
 `;
 
 const navStyles = css`
@@ -94,9 +93,7 @@ const navStyles = css`
     right: 0;
     padding-left: 20px;
     padding-right: 20px;
-  `}
-
-  li {
+  `} li {
     display: inline-block;
     padding: 24px;
     position: absolute;
@@ -105,9 +102,7 @@ const navStyles = css`
     ${media.desktop`
       position: static;
       padding: 32px 20px;
-    `}
-
-    a {
+    `} a {
       text-decoration: none;
       color: rgba(255, 255, 255, 0.87);
     }
@@ -145,23 +140,17 @@ export function HeroBanner({ data }) {
       <div className={leadStyles}>
         <div>
           <LogoSvg className={logoStyles} />
-          <h1 className={titleStyles}>
-            {data.title}
-          </h1>
+          <h1 className={titleStyles}>{data.title}</h1>
         </div>
-        <span className={howToSayStyles}>
-          {data.howToSay}
-        </span>
+        <span className={howToSayStyles}>{data.howToSay}</span>
       </div>
-      <p className={tagLineStyles}>
-        {data.tagLine}
-      </p>
+      <p className={tagLineStyles}>{data.tagLine}</p>
       <a href="https://nameko.readthedocs.io/">
         <Cta>{data.cta}</Cta>
       </a>
     </section>
   );
-};
+}
 
 export const query = graphql`
   fragment HomePageHeroBanner on HomeYaml {

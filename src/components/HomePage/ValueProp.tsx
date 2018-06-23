@@ -1,12 +1,10 @@
 import * as React from 'react';
 import { css } from 'emotion';
-import styled from 'react-emotion';
 import { Flex, Box } from 'grid-emotion';
 import Img from 'gatsby-image';
 
 import { Container } from '../Layout';
 import { media } from '../../utils/css';
-
 
 const containerStyles = css`
   margin: 66px auto;
@@ -27,46 +25,46 @@ const containerStyles = css`
     &:last-of-type {
       margin-bottom: 120px;
     }
-  `}
+  `};
 `;
 
 const titleStyles = css`
   ${media.mobile`
     text-align: center;
-  `}
+  `};
 `;
 
 const imageStyles = css`
   ${media.mobile`
     margin-bottom: 50px;
-  `}
+  `};
 `;
 
 export function ValueProp({ data, images }) {
-  const image = images.edges.find((edge) => (
-    edge.node.resolutions.originalName === data.icon
-  ));
+  const image = images.edges.find(
+    edge => edge.node.resolutions.originalName === data.icon,
+  );
 
   return (
     <Container className={containerStyles}>
       <Flex flexWrap="wrap" justifyContent="center">
-        <Box w={[1, 4/12]}>
+        <Box w={[1, 4 / 12]}>
           <Flex justifyContent="center">
-            <Img className={imageStyles} alt={data.title} resolutions={image.node.resolutions}/>
+            <Img
+              className={imageStyles}
+              alt={data.title}
+              resolutions={image.node.resolutions}
+            />
           </Flex>
         </Box>
-        <Box w={[1, 7/12]}>
-          <h3 className={titleStyles}>
-            {data.title}
-          </h3>
-          <p>
-            {data.description}
-          </p>
+        <Box w={[1, 7 / 12]}>
+          <h3 className={titleStyles}>{data.title}</h3>
+          <p>{data.description}</p>
         </Box>
       </Flex>
     </Container>
   );
-};
+}
 
 export const query = graphql`
   fragment HomePageValueProps on HomeYaml {
@@ -77,7 +75,9 @@ export const query = graphql`
     }
   }
   fragment ValuePropsImages on RootQueryType {
-    valuePropsImages: allImageSharp(filter: {id: {regex: "/images\/value_props/"}}) {
+    valuePropsImages: allImageSharp(
+      filter: { id: { regex: "/images/value_props/" } }
+    ) {
       edges {
         node {
           resolutions(width: 120) {
