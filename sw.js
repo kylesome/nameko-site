@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["/nameko-site/app-5919baf73377470ea3fd.js","7199490cf6cfb917c2a343490b5d8d34"],["/nameko-site/commons-172f966bd894ad033910.js","a3f6676aca9a503a597892de032035ae"],["/nameko-site/index.html","7a396978198d6380fe9bc6da0b89a314"],["/nameko-site/offline-plugin-app-shell-fallback/index.html","7c0f4945039a331799766ffef777946c"]];
+var precacheConfig = [["/nameko-site/app-5919baf73377470ea3fd.js","7199490cf6cfb917c2a343490b5d8d34"],["/nameko-site/commons-172f966bd894ad033910.js","a3f6676aca9a503a597892de032035ae"],["/nameko-site/index.html","2466f9e89b935e37f8f2ce381a2a4ff3"],["/nameko-site/offline-plugin-app-shell-fallback/index.html","6010bdd4a54c4775031aedf4c902b7a9"]];
 var cacheName = 'sw-precache-v3-gatsby-plugin-offline-' + (self.registration ? self.registration.scope : '');
 
 
