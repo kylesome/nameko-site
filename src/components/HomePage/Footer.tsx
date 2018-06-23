@@ -15,8 +15,7 @@ export function Footer() {
   return (
     <Container className={containerStyles}>
       <p>
-        A team effort - designed by Andreea Hrincu & built in the snazziest of
-        ways by Kyle Stewart
+        A team effort - designed by Andreea Hrincu and built by Kyle Stewart
       </p>
     </Container>
   );

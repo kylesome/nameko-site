@@ -37,7 +37,7 @@ extentions:
     description: Django wrapper for Nameko
     link: https://github.com/and3rson/django-nameko
   - title: AMQP Backoff
-    description: Retry delivery of a messages
+    description: Retry delivery of messages
     link: https://github.com/nameko/nameko-amqp-retry
 
 testimonials:
