@@ -16,7 +16,9 @@ export function FeatherIcon(props) {
     display: block;
   `;
   if (iconClassName) {
-    iconStyles = css`${iconStyles} ${iconClassName}`;
+    iconStyles = css`
+      ${iconStyles} ${iconClassName};
+    `;
   }
   const featherString = icons[name].toSvg({
     width,
@@ -27,7 +29,9 @@ export function FeatherIcon(props) {
     display: inline-block;
   `;
   if (className) {
-    spanStyles = css`${spanStyles} ${className}`;
+    spanStyles = css`
+      ${spanStyles} ${className};
+    `;
   }
 
   return (
@@ -39,4 +43,4 @@ export function FeatherIcon(props) {
       />
     </>
   );
-};
+}

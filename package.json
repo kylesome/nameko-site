@@ -34,12 +34,15 @@
     "typescript": "^2.7.2"
   },
   "devDependencies": {
-    "gh-pages": "^1.1.0"
+    "gh-pages": "^1.1.0",
+    "prettier": "^1.13.5"
   },
   "scripts": {
     "develop": "gatsby develop",
     "build": "gatsby build",
-    "lint": "yarn run lint-types",
+    "prettier": "prettier --write 'src/**/*.{ts,tsx,js}'",
+    "lint": "yarn run lint-types && yarn run lint-prettier",
+    "lint-prettier": "prettier -l 'src/**/*.{ts,tsx,js}'",
     "lint-types": "tsc --noEmit",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public"
   }

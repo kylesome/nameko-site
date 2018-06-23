@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { css } from 'emotion';
-import styled from 'react-emotion';
 import { Flex, Box } from 'grid-emotion';
-import Img from 'gatsby-image';
 
 import { Container } from '../Layout';
 import { media, colors } from '../../utils/css';
@@ -16,7 +14,7 @@ const containerStyles = css`
 
   ${media.desktop`
     margin-bottom: 32px;
-  `}
+  `};
 `;
 
 function Extention({ title, description, link }) {
@@ -43,18 +41,28 @@ function Extention({ title, description, link }) {
       }
       border-right: 1px solid ${colors.dustyGray};
       margin-bottom: 56px;
-    `}
+    `};
   `;
 
   return (
-    <Box className={boxStyles} w={[1, 4/12]}>
-      <div className={css`margin-bottom: 20px;`}>
+    <Box className={boxStyles} w={[1, 4 / 12]}>
+      <div
+        className={css`
+          margin-bottom: 20px;
+        `}
+      >
         <FeatherIcon className={iconStyles} name="box" width="18" height="18" />
         <a href={link}>
           <h3 className={titleStyles}>{title}</h3>
         </a>
       </div>
-      <p className={css`margin-bottom: 0;`}>{description}</p>
+      <p
+        className={css`
+          margin-bottom: 0;
+        `}
+      >
+        {description}
+      </p>
     </Box>
   );
 }
@@ -62,13 +70,13 @@ function Extention({ title, description, link }) {
 const desktopGridStyles = css`
   ${media.mobile`
     display: none;
-  `}
+  `};
 `;
 
 const mobileSliderStyles = css`
   ${media.desktop`
     display: none !important; /* TODO: fix this */
-  `}
+  `};
 `;
 
 const sliderSettings = {
@@ -83,26 +91,32 @@ const slideInnerStyles = css`
 export function Extentions({ data }) {
   return (
     <Container className={containerStyles}>
-      <h2 className={css`padding: 0 30px;`}>{data.title}</h2>
-      <Flex className={desktopGridStyles} flexWrap="wrap" justifyContent="center">
-      {
-        data.extentions.map((extention, i) => (
+      <h2
+        className={css`
+          padding: 0 30px;
+        `}
+      >
+        {data.title}
+      </h2>
+      <Flex
+        className={desktopGridStyles}
+        flexWrap="wrap"
+        justifyContent="center"
+      >
+        {data.extentions.map((extention, i) => (
           <Extention key={i} {...extention} />
-        ))
-      }
+        ))}
       </Flex>
       <Slider className={mobileSliderStyles} {...sliderSettings}>
-      {
-        data.extentions.map((extention, i) => (
+        {data.extentions.map((extention, i) => (
           <Slide key={i} className={slideInnerStyles}>
             <Extention key={i} {...extention} />
           </Slide>
-        ))
-      }
+        ))}
       </Slider>
     </Container>
   );
-};
+}
 
 export const query = graphql`
   fragment HomePageExtentions on HomeYaml {

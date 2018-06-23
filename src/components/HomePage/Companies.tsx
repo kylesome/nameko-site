@@ -1,14 +1,11 @@
 import * as React from 'react';
 import { css } from 'emotion';
-import styled from 'react-emotion';
-import { Flex, Box } from 'grid-emotion';
 import Img from 'gatsby-image';
 
 import { Container } from '../Layout';
 import { Slider } from '../Slider';
 import { Slide } from '../Slider/Slide';
-import { media, colors } from '../../utils/css';
-import { FeatherIcon } from '../Icons/FeatherIcon';
+import { colors } from '../../utils/css';
 
 const containerStyles = css`
   margin: 88px auto;
@@ -21,8 +18,8 @@ const headingStyles = css`
 
 const slideInnerStyles = css`
   display: flex;
-  justify-content:center;
-  align-items:center;
+  justify-content: center;
+  align-items: center;
   height: 137px;
   background-color: ${colors.white};
 `;
@@ -32,17 +29,15 @@ export function Companies({ data, images }) {
     <Container className={containerStyles}>
       <h2 className={headingStyles}>{data.title}</h2>
       <Slider>
-        {
-          images.edges.map((edge, i) => (
-            <Slide key={i} className={slideInnerStyles}>
-              <Img resolutions={edge.node.resolutions} />
-            </Slide>
-          ))
-        }
+        {images.edges.map((edge, i) => (
+          <Slide key={i} className={slideInnerStyles}>
+            <Img resolutions={edge.node.resolutions} />
+          </Slide>
+        ))}
       </Slider>
     </Container>
   );
-};
+}
 
 export const query = graphql`
   fragment HomePageCompanies on HomeYaml {
@@ -51,7 +46,9 @@ export const query = graphql`
     }
   }
   fragment CompaniesImages on RootQueryType {
-    companiesImages: allImageSharp(filter: {id: {regex: "/images\/companies/"}}) {
+    companiesImages: allImageSharp(
+      filter: { id: { regex: "/images/companies/" } }
+    ) {
       edges {
         node {
           resolutions(width: 140) {

@@ -1,7 +1,5 @@
 import * as React from 'react';
 import { css } from 'emotion';
-import styled from 'react-emotion';
-import { Flex, Box } from 'grid-emotion';
 
 import { Container } from '../Layout';
 import { media, colors } from '../../utils/css';
@@ -22,9 +20,7 @@ const markdownStyles = css`
       margin-right: -24px;
       border-radius: 0;
     }
-  `}
-
-  a {
+  `} a {
     color: ${colors.governorBay};
   }
 `;
@@ -38,11 +34,11 @@ export function Installation({ data }) {
       />
     </Container>
   );
-};
+}
 
 export const query = graphql`
   fragment CodeInstallation on RootQueryType {
-    codeInstallation: markdownRemark(id: {regex: "/home/installation/"}) {
+    codeInstallation: markdownRemark(id: { regex: "/home/installation/" }) {
       html
     }
   }

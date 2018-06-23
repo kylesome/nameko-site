@@ -1,7 +1,5 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
-import Link from 'gatsby-link';
-import styled from 'react-emotion';
 
 import { HeroBanner } from '../components/HomePage/HeroBanner';
 import { ValueProp } from '../components/HomePage/ValueProp';
@@ -24,21 +22,26 @@ export default function HomePage({ data }) {
         <title>{siteMetadata.title}</title>
         <meta property="og:url" content={siteMetadata.url} />
         <meta property="og:title" content={siteMetadata.title} />
-        <meta property="og:description" content={data.homeYaml.heroBanner.tagLine} />
+        <meta
+          property="og:description"
+          content={data.homeYaml.heroBanner.tagLine}
+        />
         <meta name="theme-color" content={colors.amethyst} />
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+        />
       </Helmet>
 
       <HeroBanner data={data.homeYaml.heroBanner} />
-      {
-        data.homeYaml.valueProps.map(valueProp => (
-          <ValueProp
-            key={valueProp.title}
-            data={valueProp}
-            images={data.valuePropsImages}
-          />
-        ))
-      }
+      {data.homeYaml.valueProps.map(valueProp => (
+        <ValueProp
+          key={valueProp.title}
+          data={valueProp}
+          images={data.valuePropsImages}
+        />
+      ))}
       <div>
         <GroupedSection>
           <Examples data={data.codeExamples} />
@@ -59,13 +62,10 @@ export default function HomePage({ data }) {
           <Testimonials data={data.homeYaml.testimonials} />
         </GroupedSection>
         <GroupedSection>
-          <Authors
-            data={data.homeYaml.authors}
-            images={data.authorsImages}
-          />
+          <Authors data={data.homeYaml.authors} images={data.authorsImages} />
         </GroupedSection>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 }
@@ -83,7 +83,7 @@ export const query = graphql`
     ...CodeExamples
     ...CodeInstallation
     ...AuthorsImages
-    homeYaml(id: {regex: "/home\/home.yaml/"}) {
+    homeYaml(id: { regex: "/home/home.yaml/" }) {
       ...HomePageHeroBanner
       ...HomePageValueProps
       ...HomePageCompanies
