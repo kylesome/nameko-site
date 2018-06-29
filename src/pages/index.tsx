@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet';
 
 import { HeroBanner } from '../components/HomePage/HeroBanner';
+import { Badges } from '../components/HomePage/Badges';
 import { ValueProp } from '../components/HomePage/ValueProp';
 import { Installation } from '../components/HomePage/Installation';
 import { Companies } from '../components/HomePage/Companies';
@@ -35,6 +36,7 @@ export default function HomePage({ data }) {
       </Helmet>
 
       <HeroBanner data={data.homeYaml.heroBanner} />
+      <Badges />
       {data.homeYaml.valueProps.map(valueProp => (
         <ValueProp
           key={valueProp.title}
