@@ -26,7 +26,7 @@ const ValuePropFlex = styled(Flex)`
   margin-bottom: 66px;
 `;
 
-export function ValueProp({ data, images }) {
+function ValueProp({ data, images }) {
   const image = images.edges.find(
     edge => edge.node.resolutions.originalName === data.icon,
   );

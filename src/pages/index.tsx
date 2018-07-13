@@ -12,7 +12,7 @@ import { Authors } from '../components/HomePage/Authors';
 import { Testimonials } from '../components/HomePage/Testimonials';
 import { GroupedSection } from '../components/HomePage/GroupedSection';
 import { Footer } from '../components/HomePage/Footer';
-import { colors, media } from '../utils/css';
+import { colors } from '../utils/css';
 
 export default function HomePage({ data }) {
   const siteMetadata = data.site.siteMetadata;
