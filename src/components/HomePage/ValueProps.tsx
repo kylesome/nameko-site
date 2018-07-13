@@ -1,32 +1,11 @@
 import * as React from 'react';
 import { css } from 'emotion';
-import { Flex, Box } from 'grid-emotion';
+import { Flex, Box } from 'grid-styled';
+import styled from 'react-emotion';
 import Img from 'gatsby-image';
 
 import { Container } from '../Layout';
 import { media } from '../../utils/css';
-
-const containerStyles = css`
-  margin: 66px auto;
-
-  &:first-of-type {
-    margin-top: 80px;
-  }
-
-  &:last-of-type {
-    margin-bottom: 80px;
-  }
-
-  ${media.desktop`
-    &:first-of-type {
-      margin-top: 120px;
-    }
-
-    &:last-of-type {
-      margin-bottom: 120px;
-    }
-  `};
-`;
 
 const titleStyles = css`
   ${media.mobile`
@@ -40,28 +19,51 @@ const imageStyles = css`
   `};
 `;
 
-export function ValueProp({ data, images }) {
+const ValuePropFlex = styled(Flex)`
+  flex-wrap: wrap;
+  justify-content: center;
+
+  margin-bottom: 66px;
+`;
+
+function ValueProp({ data, images }) {
   const image = images.edges.find(
     edge => edge.node.resolutions.originalName === data.icon,
   );
 
   return (
+    <ValuePropFlex flexWrap="wrap" justifyContent="center">
+      <Box w={[1, 4 / 12]}>
+        <Flex justifyContent="center">
+          <Img
+            className={imageStyles}
+            alt={data.title}
+            resolutions={image.node.resolutions}
+          />
+        </Flex>
+      </Box>
+      <Box w={[1, 7 / 12]}>
+        <h3 className={titleStyles}>{data.title}</h3>
+        <p>{data.description}</p>
+      </Box>
+    </ValuePropFlex>
+  );
+}
+
+const containerStyles = css`
+  margin: 80px auto 80px auto;
+
+  ${media.desktop`
+    margin: 120px auto 90px auto;
+  `};
+`;
+
+export function ValueProps({ data, images }) {
+  return (
     <Container className={containerStyles}>
-      <Flex flexWrap="wrap" justifyContent="center">
-        <Box w={[1, 4 / 12]}>
-          <Flex justifyContent="center">
-            <Img
-              className={imageStyles}
-              alt={data.title}
-              resolutions={image.node.resolutions}
-            />
-          </Flex>
-        </Box>
-        <Box w={[1, 7 / 12]}>
-          <h3 className={titleStyles}>{data.title}</h3>
-          <p>{data.description}</p>
-        </Box>
-      </Flex>
+      {data.map(valueProp => (
+        <ValueProp key={valueProp.title} data={valueProp} images={images} />
+      ))}
     </Container>
   );
 }
