@@ -1,18 +1,10 @@
 import * as React from 'react';
 import { css } from 'emotion';
-import Img from 'gatsby-image';
+import { Flex } from 'grid-styled';
 
-import { Container } from '../Layout';
-import { Slider } from '../Slider';
-import { Slide } from '../Slider/Slide';
-import { colors } from '../../utils/css';
+import { colors, media } from '../../utils/css';
 
-const containerStyles = css`
-  margin: 88px auto;
-  padding: 0 60px;
-`;
-
-// courtesy of https://github.com/facebook/immutable-js/blob/master/pages/src/src/StarBtn.less
+// Courtesy of https://github.com/facebook/immutable-js/blob/master/pages/src/src/StarBtn.less
 const githubButtonStyles = css`
   .github-btn {
     display: flex;
@@ -40,7 +32,13 @@ const githubButtonStyles = css`
   }
 
   .gh-btn {
-    background: -webkit-gradient(linear, left top, left bottom, from(#fafafa), to(#eaeaea));
+    background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(#fafafa),
+      to(#eaeaea)
+    );
     background: -webkit-linear-gradient(top, #fafafa, #eaeaea);
     background: -moz-linear-gradient(top, #fafafa, #eaeaea);
     background: -ms-linear-gradient(top, #fafafa, #eaeaea);
@@ -53,13 +51,19 @@ const githubButtonStyles = css`
     background-color: #3072b3;
     border-color: #518cc6 #518cc6 #2a65a0;
     color: #fff;
-    text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   }
 
   .gh-btn:hover,
   .gh-btn:focus {
     background-color: #599bdc;
-    background: -webkit-gradient(linear, left top, left bottom, from(#599bdc), to(#3072b3));
+    background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(#599bdc),
+      to(#3072b3)
+    );
     background: -webkit-linear-gradient(top, #599bdc, #3072b3);
     background: -moz-linear-gradient(top, #599bdc, #3072b3);
     background: -ms-linear-gradient(top, #599bdc, #3072b3);
@@ -67,10 +71,10 @@ const githubButtonStyles = css`
   }
 
   .gh-btn:active {
-    -moz-box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
-    -webkit-box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+    -moz-box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
     background-image: none;
-    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
   }
 
   .gh-ico {
@@ -93,17 +97,18 @@ const githubButtonStyles = css`
     background-color: #fafafa;
     display: block !important;
     display: none;
+    z-index: 2;
   }
 
   .gh-count:hover,
   .gh-count:focus {
-    color: #4183C4;
+    color: #4183c4;
   }
 
   .gh-triangle {
-      position: relative;
-      margin-left: 11px;
-      margin-right: -1px;
+    position: relative;
+    margin-left: 11px;
+    margin-right: -1px;
   }
 
   .gh-triangle:before,
@@ -114,24 +119,25 @@ const githubButtonStyles = css`
     position: absolute;
   }
 
-  .gh-triangle:before{
+  .gh-triangle:before {
     border-right-color: #fafafa;
     border-width: 8px 8px 8px 0;
     left: -7px;
     margin-top: -8px;
     top: 50%;
+    z-index: 3;
   }
 
-  .gh-triangle:after{
+  .gh-triangle:after {
     border-right-color: #bababa;
     border-width: 9px 9px 9px 0;
     left: -8px;
     margin-top: -9px;
     top: 50%;
-    z-index: -1;
+    z-index: 1;
   }
 
-  @media only screen and (max-width: 680px) {
+  ${media.mobile`
     .gh-btn,
     .gh-count {
       font-size: 16px;
@@ -151,41 +157,74 @@ const githubButtonStyles = css`
     .gh-btn:active .gh-ico {
       background-position: -18px 0;
     }
-  }
+  `};
 `;
 
-function GithubBadge() {
-  const numStars = 1000;
-
-  return (
-    <div className={githubButtonStyles}>
-      <span className="github-btn">
-        <a
-          className="gh-btn"
-          id="gh-btn"
-          href="https://github.com/facebook/immutable-js/"
-        >
-          <span className="gh-ico" />
-          <span className="gh-text">Star</span>
-        </a>
-        {numStars && <span className="gh-triangle" />}
-        {numStars && (
-          <a
-            className="gh-count"
-            href="https://github.com/facebook/immutable-js/stargazers"
-          >
-            {numStars}
-          </a>
-        )}
-      </span>
-    </div>
-  );
+interface GithubBadgeState {
+  numStars: number;
 }
+
+class GithubBadge extends React.Component<any, GithubBadgeState> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      numStars: 0,
+    };
+  }
+
+  componentDidMount() {
+    fetch('https://api.github.com/repos/nameko/nameko')
+      .then(response => {
+        return response.json();
+      })
+      .then(json => {
+        this.setState({
+          numStars: json.stargazers_count,
+        });
+      });
+  }
+
+  render() {
+    const { numStars } = this.state;
+
+    return (
+      <Flex justifyContent="center" alignItems="center">
+        <div className={githubButtonStyles}>
+          <span className="github-btn">
+            <a
+              className="gh-btn"
+              id="gh-btn"
+              href="https://github.com/nameko/nameko"
+            >
+              <span className="gh-ico" />
+              <span className="gh-text">Star</span>
+            </a>
+            {numStars && <span className="gh-triangle" />}
+            {numStars && (
+              <a
+                className="gh-count"
+                href="https://github.com/nameko/nameko/stargazers"
+              >
+                {numStars}
+              </a>
+            )}
+          </span>
+        </div>
+      </Flex>
+    );
+  }
+}
+
+const containerStyles = css`
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: ${colors.wildSand};
+`;
 
 export function Badges() {
   return (
-    <Container className={containerStyles}>
+    <div className={containerStyles}>
       <GithubBadge />
-    </Container>
+    </div>
   );
 }

@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 
 import { HeroBanner } from '../components/HomePage/HeroBanner';
 import { Badges } from '../components/HomePage/Badges';
-import { ValueProp } from '../components/HomePage/ValueProp';
+import { ValueProps } from '../components/HomePage/ValueProps';
 import { Installation } from '../components/HomePage/Installation';
 import { Companies } from '../components/HomePage/Companies';
 import { Examples } from '../components/HomePage/Examples';
@@ -37,13 +37,10 @@ export default function HomePage({ data }) {
 
       <HeroBanner data={data.homeYaml.heroBanner} />
       <Badges />
-      {data.homeYaml.valueProps.map(valueProp => (
-        <ValueProp
-          key={valueProp.title}
-          data={valueProp}
-          images={data.valuePropsImages}
-        />
-      ))}
+      <ValueProps
+        data={data.homeYaml.valueProps}
+        images={data.valuePropsImages}
+      />
       <div>
         <GroupedSection>
           <Examples data={data.codeExamples} />
@@ -95,3 +92,140 @@ export const query = graphql`
     }
   }
 `;
+
+/*
+---------------------------------------------------------------------------------
+-------- FULL HOMEPAGE QUERY (use for debugging content api in graphiql) --------
+---------------------------------------------------------------------------------
+
+query HomePage {
+  site {
+    siteMetadata {
+      title
+      url
+    }
+  }
+  ...ValuePropsImages
+  ...CompaniesImages
+  ...CodeExamples
+  ...CodeInstallation
+  ...AuthorsImages
+  homeYaml(id: {regex: "/home/home.yaml/"}) {
+    ...HomePageHeroBanner
+    ...HomePageValueProps
+    ...HomePageCompanies
+    ...HomePageExtentions
+    ...HomePageTestimonials
+    ...HomePageAuthors
+  }
+}
+
+fragment HomePageValueProps on HomeYaml {
+  valueProps {
+    title
+    description
+    icon
+  }
+}
+
+fragment ValuePropsImages on RootQueryType {
+  valuePropsImages: allImageSharp(filter: {id: {regex: "/images/value_props/"}}) {
+    edges {
+      node {
+        resolutions(width: 120) {
+          originalName
+        }
+      }
+    }
+  }
+}
+
+fragment HomePageCompanies on HomeYaml {
+  companies {
+    title
+  }
+}
+
+fragment CompaniesImages on RootQueryType {
+  companiesImages: allImageSharp(filter: {id: {regex: "/images/companies/"}}) {
+    edges {
+      node {
+        resolutions(width: 140) {
+          originalName
+        }
+      }
+    }
+  }
+}
+
+fragment CodeExamples on RootQueryType {
+  codeExamples: allMarkdownRemark(filter: {id: {regex: "/home/examples/"}}, sort: {fields: [frontmatter___order], order: ASC}) {
+    edges {
+      node {
+        html
+      }
+    }
+  }
+}
+
+fragment CodeInstallation on RootQueryType {
+  codeInstallation: markdownRemark(id: {regex: "/home/installation/"}) {
+    html
+  }
+}
+
+fragment HomePageAuthors on HomeYaml {
+  authors {
+    title
+    authors {
+      name
+      githubHandle
+      twitterHandle
+      image
+    }
+  }
+}
+
+fragment AuthorsImages on RootQueryType {
+  authorsImages: allImageSharp(filter: {id: {regex: "/images/authors/"}}) {
+    edges {
+      node {
+        resolutions(width: 150) {
+          originalName
+        }
+      }
+    }
+  }
+}
+
+fragment HomePageHeroBanner on HomeYaml {
+  heroBanner {
+    title
+    howToSay
+    tagLine
+    cta
+  }
+}
+
+fragment HomePageExtentions on HomeYaml {
+  extentions {
+    title
+    extentions {
+      title
+      description
+      link
+    }
+  }
+}
+
+fragment HomePageTestimonials on HomeYaml {
+  testimonials {
+    title
+    testimonials {
+      quote
+      author
+      twitterHandle
+    }
+  }
+}
+*/
