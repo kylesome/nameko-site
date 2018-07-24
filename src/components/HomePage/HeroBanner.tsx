@@ -109,6 +109,10 @@ const navStyles = css`
   }
 `;
 
+const forumLinkStyles = css`
+  left: 0;
+`;
+
 const docsLinkStyles = css`
   left: 0;
 `;
@@ -120,8 +124,11 @@ const githubLinkStyles = css`
 function Navigation() {
   return (
     <ul className={navStyles}>
+      <li className={forumLinkStyles}>
+        <a href="https://discourse.nameko.io/">Forum</a>
+      </li>
       <li className={docsLinkStyles}>
-        <a href="https://nameko.readthedocs.io/">
+        <a href="https://docs.nameko.io/">
           <span className={mobileOnly}>Docs</span>
           <span className={desktopOnly}>Documentation</span>
         </a>
@@ -145,7 +152,7 @@ export function HeroBanner({ data }) {
         <span className={howToSayStyles}>{data.howToSay}</span>
       </div>
       <p className={tagLineStyles}>{data.tagLine}</p>
-      <a href="https://nameko.readthedocs.io/">
+      <a href="https://docs.nameko.io/">
         <Cta>{data.cta}</Cta>
       </a>
     </section>
