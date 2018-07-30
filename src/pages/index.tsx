@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import { HeroBanner } from '../components/HomePage/HeroBanner';
 import { ValueProp } from '../components/HomePage/ValueProp';
 import { Installation } from '../components/HomePage/Installation';
+import { Community } from '../components/HomePage/Community';
 import { Companies } from '../components/HomePage/Companies';
 import { Examples } from '../components/HomePage/Examples';
 import { Extentions } from '../components/HomePage/Extentions';
@@ -50,16 +51,19 @@ export default function HomePage({ data }) {
           <Installation data={data.codeInstallation} />
         </GroupedSection>
         <GroupedSection>
-          <Companies
-            data={data.homeYaml.companies}
-            images={data.companiesImages}
-          />
+          <Community data={data.homeYaml.community} images={data.communityImages} />
         </GroupedSection>
       </div>
       <Extentions data={data.homeYaml.extentions} />
       <div>
         <GroupedSection>
           <Testimonials data={data.homeYaml.testimonials} />
+        </GroupedSection>
+        <GroupedSection>
+          <Companies
+            data={data.homeYaml.companies}
+            images={data.companiesImages}
+          />
         </GroupedSection>
         <GroupedSection>
           <Authors data={data.homeYaml.authors} images={data.authorsImages} />
@@ -83,11 +87,13 @@ export const query = graphql`
     ...CodeExamples
     ...CodeInstallation
     ...AuthorsImages
+    ...CommunityImages
     homeYaml(id: { regex: "/home/home.yaml/" }) {
       ...HomePageHeroBanner
       ...HomePageValueProps
       ...HomePageCompanies
       ...HomePageExtentions
+      ...HomePageCommunity
       ...HomePageTestimonials
       ...HomePageAuthors
     }

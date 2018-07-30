@@ -40,6 +40,26 @@ extentions:
     description: Retry delivery of messages
     link: https://github.com/nameko/nameko-amqp-retry
 
+community:
+  title: Community
+  items:
+  - title: Discourse
+    description: Questions & Support
+    link: https://discourse.nameko.io
+    image: discourse.png
+  - title: Twitter
+    description: News & Announcements
+    link: https://twitter.com/nameko_python
+    image: twitter.png
+  - title: Gitter
+    description: Real-time Chat
+    link: https://gitter.im/nameko/Lobby
+    image: gitter.png
+  - title: Github
+    description: Issues & Pull Requests
+    link: https://github.com/nameko/nameko
+    image: github.png
+
 testimonials:
   title: Testimonials
   testimonials:
