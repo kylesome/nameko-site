@@ -109,10 +109,6 @@ const navStyles = css`
   }
 `;
 
-const forumLinkStyles = css`
-  left: 0;
-`;
-
 const docsLinkStyles = css`
   left: 0;
 `;
@@ -124,9 +120,6 @@ const githubLinkStyles = css`
 function Navigation() {
   return (
     <ul className={navStyles}>
-      <li className={forumLinkStyles}>
-        <a href="https://discourse.nameko.io/">Forum</a>
-      </li>
       <li className={docsLinkStyles}>
         <a href="https://docs.nameko.io/">
           <span className={mobileOnly}>Docs</span>
