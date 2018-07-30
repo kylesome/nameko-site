@@ -18,9 +18,9 @@ valueProps:
 companies:
   title: Used by many
 
-extentions:
-  title: Extentions
-  extentions:
+extensions:
+  title: Extensions
+  extensions:
   - title: Sentry
     description: Sends exception info to Sentry
     link: https://github.com/mattbennett/nameko-sentry

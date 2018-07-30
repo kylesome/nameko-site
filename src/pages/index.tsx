@@ -7,7 +7,7 @@ import { Installation } from '../components/HomePage/Installation';
 import { Community } from '../components/HomePage/Community';
 import { Companies } from '../components/HomePage/Companies';
 import { Examples } from '../components/HomePage/Examples';
-import { Extentions } from '../components/HomePage/Extentions';
+import { Extensions } from '../components/HomePage/Extensions';
 import { Authors } from '../components/HomePage/Authors';
 import { Testimonials } from '../components/HomePage/Testimonials';
 import { GroupedSection } from '../components/HomePage/GroupedSection';
@@ -54,7 +54,7 @@ export default function HomePage({ data }) {
           <Community data={data.homeYaml.community} images={data.communityImages} />
         </GroupedSection>
       </div>
-      <Extentions data={data.homeYaml.extentions} />
+      <Extensions data={data.homeYaml.extensions} />
       <div>
         <GroupedSection>
           <Testimonials data={data.homeYaml.testimonials} />
@@ -92,7 +92,7 @@ export const query = graphql`
       ...HomePageHeroBanner
       ...HomePageValueProps
       ...HomePageCompanies
-      ...HomePageExtentions
+      ...HomePageExtensions
       ...HomePageCommunity
       ...HomePageTestimonials
       ...HomePageAuthors

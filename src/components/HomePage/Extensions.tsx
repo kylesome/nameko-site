@@ -17,7 +17,7 @@ const containerStyles = css`
   `};
 `;
 
-function Extention({ title, description, link }) {
+function Extension({ title, description, link }) {
   const iconStyles = css`
     color: ${colors.governorBay};
     margin-right: 16px;
@@ -88,7 +88,7 @@ const slideInnerStyles = css`
   min-height: 140px;
 `;
 
-export function Extentions({ data }) {
+export function Extensions({ data }) {
   return (
     <Container className={containerStyles}>
       <h2
@@ -103,14 +103,14 @@ export function Extentions({ data }) {
         flexWrap="wrap"
         justifyContent="center"
       >
-        {data.extentions.map((extention, i) => (
-          <Extention key={i} {...extention} />
+        {data.extensions.map((extension, i) => (
+          <Extension key={i} {...extension} />
         ))}
       </Flex>
       <Slider className={mobileSliderStyles} {...sliderSettings}>
-        {data.extentions.map((extention, i) => (
+        {data.extensions.map((extension, i) => (
           <Slide key={i} className={slideInnerStyles}>
-            <Extention key={i} {...extention} />
+            <Extension key={i} {...extension} />
           </Slide>
         ))}
       </Slider>
@@ -119,10 +119,10 @@ export function Extentions({ data }) {
 }
 
 export const query = graphql`
-  fragment HomePageExtentions on HomeYaml {
-    extentions {
+  fragment HomePageExtensions on HomeYaml {
+    extensions {
       title
-      extentions {
+      extensions {
         title
         description
         link
