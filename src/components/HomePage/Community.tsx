@@ -21,7 +21,6 @@ const containerStyles = css`
 function Item({ title, description, link, image }) {
 
   const boxStyles = css`
-    padding: 16px 30px;
     text-align: center;
 
     ${media.desktop`
@@ -29,21 +28,13 @@ function Item({ title, description, link, image }) {
     `};
   `;
 
-  const imageStyles = css`
-    padding:  16px 30px;
+  const linkStyles = css`
+  `;
 
-    ${media.desktop`
-      display: inline-block;
-      margin-right: 30px;
-    `};
+  const imageStyles = css`
   `;
 
   const imageWrapperStyles = css`
-    text-align: center;
-
-    ${media.desktop`
-      display: inline-block;
-    `};
   `;
 
   return (
@@ -53,7 +44,7 @@ function Item({ title, description, link, image }) {
           margin-bottom: 20px;
         `}
       >
-        <a href={link}>
+        <a href={link} className={linkStyles}>
           <Img
             className={imageStyles}
             outerWrapperClassName={imageWrapperStyles}
@@ -91,7 +82,9 @@ const sliderSettings = {
 };
 
 const slideInnerStyles = css`
-  min-height: 140px;
+  min-height: 250px;
+  display: flex;
+  align-items: center;
 `;
 
 export function Community({ data, images }) {
@@ -146,7 +139,7 @@ export const query = graphql`
     ) {
       edges {
         node {
-          resolutions(width: 150) {
+          resolutions(width: 120) {
             ...GatsbyImageSharpResolutions_tracedSVG
             originalName
           }
