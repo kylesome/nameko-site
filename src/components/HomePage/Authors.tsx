@@ -25,10 +25,12 @@ function Author(props) {
     padding-top: 10px;
     vertical-align: top;
     margin-bottom: 52px;
+    text-align: center;
 
     ${media.desktop`
       display: inline-block;
       padding-top: 25px;
+      text-align: left;
     `};
   `;
 
