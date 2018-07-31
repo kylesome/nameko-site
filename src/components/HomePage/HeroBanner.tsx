@@ -121,7 +121,7 @@ function Navigation() {
   return (
     <ul className={navStyles}>
       <li className={docsLinkStyles}>
-        <a href="https://nameko.readthedocs.io/">
+        <a href="https://docs.nameko.io/">
           <span className={mobileOnly}>Docs</span>
           <span className={desktopOnly}>Documentation</span>
         </a>
@@ -145,7 +145,7 @@ export function HeroBanner({ data }) {
         <span className={howToSayStyles}>{data.howToSay}</span>
       </div>
       <p className={tagLineStyles}>{data.tagLine}</p>
-      <a href="https://nameko.readthedocs.io/">
+      <a href="https://docs.nameko.io/">
         <Cta>{data.cta}</Cta>
       </a>
     </section>

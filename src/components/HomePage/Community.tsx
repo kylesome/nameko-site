@@ -2,10 +2,10 @@ import * as React from 'react';
 import { css } from 'emotion';
 import { Flex, Box } from 'grid-styled';
 import styled from 'react-emotion';
+import Img from 'gatsby-image';
 
 import { Container } from '../Layout';
 import { media, colors } from '../../utils/css';
-import { FeatherIcon } from '../Icons/FeatherIcon';
 import { Slider } from '../Slider';
 import { Slide } from '../Slider/Slide';
 
@@ -18,43 +18,28 @@ const containerStyles = css`
   `};
 `;
 
-function Extention({ title, description, link }) {
-  const iconStyles = css`
-    color: ${colors.governorBay};
-    margin-right: 16px;
-    vertical-align: middle;
-  `;
-
-  const titleStyles = css`
-    display: inline-block;
-    font-size: 18px;
-    vertical-align: middle;
-    margin-bottom: 0;
-    color: ${colors.governorBay};
-  `;
+function Item({ title, description, link, image }) {
 
   const boxStyles = css`
-    padding: 16px 30px;
+    text-align: center;
 
     ${media.desktop`
-      &:nth-child(3n) {
-        border-right: 0;
-      }
-      border-right: 1px solid ${colors.dustyGray};
       margin-bottom: 56px;
     `};
   `;
 
   return (
-    <Box className={boxStyles} w={[1, 4 / 12]}>
+    <Box className={boxStyles} w={[1, 5 / 20]}>
       <div
         className={css`
           margin-bottom: 20px;
         `}
       >
-        <FeatherIcon className={iconStyles} name="box" width="18" height="18" />
         <a href={link}>
-          <h3 className={titleStyles}>{title}</h3>
+          <Img
+            alt={title}
+            resolutions={image.resolutions}
+          />
         </a>
       </div>
       <p
@@ -80,7 +65,9 @@ const sliderSettings = {
 };
 
 const slideInnerStyles = css`
-  min-height: 140px;
+  min-height: 250px;
+  display: flex;
+  align-items: center;
 `;
 
 const DesktopFlex = styled(Flex)`
@@ -92,7 +79,11 @@ const DesktopFlex = styled(Flex)`
   `};
 `;
 
-export function Extentions({ data }) {
+export function Community({ data, images }) {
+
+  const getImage = name =>
+    images.edges.find(edge => edge.node.resolutions.originalName === name).node;
+
   return (
     <Container className={containerStyles}>
       <h2
@@ -103,14 +94,14 @@ export function Extentions({ data }) {
         {data.title}
       </h2>
       <DesktopFlex>
-        {data.extentions.map((extention, i) => (
-          <Extention key={i} {...extention} />
+        {data.items.map((item, i) => (
+          <Item key={i} {...item} image={getImage(item.image)} />
         ))}
       </DesktopFlex>
       <Slider className={mobileSliderStyles} {...sliderSettings}>
-        {data.extentions.map((extention, i) => (
+        {data.items.map((item, i) => (
           <Slide key={i} className={slideInnerStyles}>
-            <Extention key={i} {...extention} />
+            <Item key={i} {...item} image={getImage(item.image)} />
           </Slide>
         ))}
       </Slider>
@@ -119,13 +110,28 @@ export function Extentions({ data }) {
 }
 
 export const query = graphql`
-  fragment HomePageExtentions on HomeYaml {
-    extentions {
+  fragment HomePageCommunity on HomeYaml {
+    community {
       title
-      extentions {
+      items {
         title
         description
         link
+        image
+      }
+    }
+  }
+  fragment CommunityImages on RootQueryType {
+    communityImages: allImageSharp(
+      filter: { id: { regex: "/images/community/" } }
+    ) {
+      edges {
+        node {
+          resolutions(width: 120) {
+            ...GatsbyImageSharpResolutions_tracedSVG
+            originalName
+          }
+        }
       }
     }
   }

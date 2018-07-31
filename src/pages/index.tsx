@@ -5,9 +5,10 @@ import { HeroBanner } from '../components/HomePage/HeroBanner';
 import { Badges } from '../components/HomePage/Badges';
 import { ValueProps } from '../components/HomePage/ValueProps';
 import { Installation } from '../components/HomePage/Installation';
+import { Community } from '../components/HomePage/Community';
 import { Companies } from '../components/HomePage/Companies';
 import { Examples } from '../components/HomePage/Examples';
-import { Extentions } from '../components/HomePage/Extentions';
+import { Extensions } from '../components/HomePage/Extensions';
 import { Authors } from '../components/HomePage/Authors';
 import { Testimonials } from '../components/HomePage/Testimonials';
 import { GroupedSection } from '../components/HomePage/GroupedSection';
@@ -49,16 +50,19 @@ export default function HomePage({ data }) {
           <Installation data={data.codeInstallation} />
         </GroupedSection>
         <GroupedSection>
+          <Community data={data.homeYaml.community} images={data.communityImages} />
+        </GroupedSection>
+      </div>
+      <Extensions data={data.homeYaml.extensions} />
+      <div>
+        <GroupedSection>
+          <Testimonials data={data.homeYaml.testimonials} />
+        </GroupedSection>
+        <GroupedSection>
           <Companies
             data={data.homeYaml.companies}
             images={data.companiesImages}
           />
-        </GroupedSection>
-      </div>
-      <Extentions data={data.homeYaml.extentions} />
-      <div>
-        <GroupedSection>
-          <Testimonials data={data.homeYaml.testimonials} />
         </GroupedSection>
         <GroupedSection>
           <Authors data={data.homeYaml.authors} images={data.authorsImages} />
@@ -82,11 +86,13 @@ export const query = graphql`
     ...CodeExamples
     ...CodeInstallation
     ...AuthorsImages
+    ...CommunityImages
     homeYaml(id: { regex: "/home/home.yaml/" }) {
       ...HomePageHeroBanner
       ...HomePageValueProps
       ...HomePageCompanies
-      ...HomePageExtentions
+      ...HomePageExtensions
+      ...HomePageCommunity
       ...HomePageTestimonials
       ...HomePageAuthors
     }
@@ -114,7 +120,7 @@ query HomePage {
     ...HomePageHeroBanner
     ...HomePageValueProps
     ...HomePageCompanies
-    ...HomePageExtentions
+    ...HomePageExtensions
     ...HomePageTestimonials
     ...HomePageAuthors
   }
@@ -207,10 +213,10 @@ fragment HomePageHeroBanner on HomeYaml {
   }
 }
 
-fragment HomePageExtentions on HomeYaml {
-  extentions {
+fragment HomePageExtensions on HomeYaml {
+  extensions {
     title
-    extentions {
+    extensions {
       title
       description
       link
