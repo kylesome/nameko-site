@@ -120,7 +120,7 @@ query HomePage {
     ...HomePageHeroBanner
     ...HomePageValueProps
     ...HomePageCompanies
-    ...HomePageExtentions
+    ...HomePageExtensions
     ...HomePageTestimonials
     ...HomePageAuthors
   }
@@ -213,10 +213,10 @@ fragment HomePageHeroBanner on HomeYaml {
   }
 }
 
-fragment HomePageExtentions on HomeYaml {
-  extentions {
+fragment HomePageExtensions on HomeYaml {
+  extensions {
     title
-    extentions {
+    extensions {
       title
       description
       link
