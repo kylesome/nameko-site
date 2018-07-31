@@ -28,15 +28,6 @@ function Item({ title, description, link, image }) {
     `};
   `;
 
-  const linkStyles = css`
-  `;
-
-  const imageStyles = css`
-  `;
-
-  const imageWrapperStyles = css`
-  `;
-
   return (
     <Box className={boxStyles} w={[1, 5 / 20]}>
       <div
@@ -44,10 +35,8 @@ function Item({ title, description, link, image }) {
           margin-bottom: 20px;
         `}
       >
-        <a href={link} className={linkStyles}>
+        <a href={link}>
           <Img
-            className={imageStyles}
-            outerWrapperClassName={imageWrapperStyles}
             alt={title}
             resolutions={image.resolutions}
           />
