@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css } from 'emotion';
-import { Flex, Box } from 'grid-emotion';
+import { Flex, Box } from 'grid-styled';
 import Img from 'gatsby-image';
 
 import { Container } from '../Layout';

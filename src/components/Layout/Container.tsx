@@ -1,5 +1,5 @@
 import styled from 'react-emotion';
-import { Box } from 'grid-emotion';
+import { Box } from 'grid-styled';
 
 import { media } from '../../utils/css';
 

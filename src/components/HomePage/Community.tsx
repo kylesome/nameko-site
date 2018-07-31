@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { css } from 'emotion';
-import { Flex, Box } from 'grid-emotion';
+import { Flex, Box } from 'grid-styled';
+import styled from 'react-emotion';
 import Img from 'gatsby-image';
 
 import { Container } from '../Layout';
 import { media, colors } from '../../utils/css';
-import { FeatherIcon } from '../Icons/FeatherIcon';
 import { Slider } from '../Slider';
 import { Slide } from '../Slider/Slide';
 
@@ -64,12 +64,6 @@ function Item({ title, description, link, image }) {
   );
 }
 
-const desktopGridStyles = css`
-  ${media.mobile`
-    display: none;
-  `};
-`;
-
 const mobileSliderStyles = css`
   ${media.desktop`
     display: none !important; /* TODO: fix this */
@@ -87,6 +81,15 @@ const slideInnerStyles = css`
   align-items: center;
 `;
 
+const DesktopFlex = styled(Flex)`
+  flex-wrap: wrap;
+  justify-content: center;
+
+  ${media.mobile`
+    display: none;
+  `};
+`;
+
 export function Community({ data, images }) {
 
   const getImage = name =>
@@ -101,15 +104,11 @@ export function Community({ data, images }) {
       >
         {data.title}
       </h2>
-      <Flex
-        className={desktopGridStyles}
-        flexWrap="wrap"
-        justifyContent="center"
-      >
+      <DesktopFlex>
         {data.items.map((item, i) => (
           <Item key={i} {...item} image={getImage(item.image)} />
         ))}
-      </Flex>
+      </DesktopFlex>
       <Slider className={mobileSliderStyles} {...sliderSettings}>
         {data.items.map((item, i) => (
           <Slide key={i} className={slideInnerStyles}>

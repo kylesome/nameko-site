@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { css } from 'emotion';
-import { Flex, Box } from 'grid-emotion';
+import { Flex, Box } from 'grid-styled';
+import styled from 'react-emotion';
 
 import { Container } from '../Layout';
 import { media, colors } from '../../utils/css';
@@ -67,12 +68,6 @@ function Extension({ title, description, link }) {
   );
 }
 
-const desktopGridStyles = css`
-  ${media.mobile`
-    display: none;
-  `};
-`;
-
 const mobileSliderStyles = css`
   ${media.desktop`
     display: none !important; /* TODO: fix this */
@@ -88,6 +83,15 @@ const slideInnerStyles = css`
   min-height: 140px;
 `;
 
+const DesktopFlex = styled(Flex)`
+  flex-wrap: wrap;
+  justify-content: center;
+
+  ${media.mobile`
+    display: none;
+  `};
+`;
+
 export function Extensions({ data }) {
   return (
     <Container className={containerStyles}>
@@ -98,15 +102,11 @@ export function Extensions({ data }) {
       >
         {data.title}
       </h2>
-      <Flex
-        className={desktopGridStyles}
-        flexWrap="wrap"
-        justifyContent="center"
-      >
+      <DesktopFlex>
         {data.extensions.map((extension, i) => (
           <Extension key={i} {...extension} />
         ))}
-      </Flex>
+      </DesktopFlex>
       <Slider className={mobileSliderStyles} {...sliderSettings}>
         {data.extensions.map((extension, i) => (
           <Slide key={i} className={slideInnerStyles}>
