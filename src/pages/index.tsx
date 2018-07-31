@@ -50,7 +50,10 @@ export default function HomePage({ data }) {
           <Installation data={data.codeInstallation} />
         </GroupedSection>
         <GroupedSection>
-          <Community data={data.homeYaml.community} images={data.communityImages} />
+          <Community
+            data={data.homeYaml.community}
+            images={data.communityImages}
+          />
         </GroupedSection>
       </div>
       <Extensions data={data.homeYaml.extensions} />

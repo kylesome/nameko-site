@@ -19,7 +19,6 @@ const containerStyles = css`
 `;
 
 function Item({ title, description, link, image }) {
-
   const boxStyles = css`
     text-align: center;
 
@@ -36,10 +35,7 @@ function Item({ title, description, link, image }) {
         `}
       >
         <a href={link}>
-          <Img
-            alt={title}
-            resolutions={image.resolutions}
-          />
+          <Img alt={title} resolutions={image.resolutions} />
         </a>
       </div>
       <p
@@ -80,7 +76,6 @@ const DesktopFlex = styled(Flex)`
 `;
 
 export function Community({ data, images }) {
-
   const getImage = name =>
     images.edges.find(edge => edge.node.resolutions.originalName === name).node;
 
