@@ -88,7 +88,7 @@ const DesktopFlex = styled(Flex)`
   justify-content: center;
 
   ${media.mobile`
-    display: none;
+    display: none !important; /* TODO: fix this */
   `};
 `;
 

@@ -24,7 +24,6 @@ function Author(props) {
   const authorInfoStyles = css`
     padding-top: 10px;
     vertical-align: top;
-    text-align: center;
     margin-bottom: 52px;
 
     ${media.desktop`
